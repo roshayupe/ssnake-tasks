@@ -1,11 +1,12 @@
-You have several classe TAuto, TDriver with their help you can describe cars and drivers.
-Each class has ID property it's needed to indetify each record in list.
+It's buch of simple tasks to master or improve skills of working with JSON in delphi.
+To start working on these tasks you have to have installed Delphi XE4 or newer.(look at rutracker.org if you don't have any versions)
 
 Task 1
 
-There are two list classes TDriverList and TAutoList you have to add two methods loadFromJSON and saveToJSON.
-As you can see we need copabilty to save into a json file and load from a json file.
-Create json file with following data:
+You have several TAuto and TDriver classes with their help you can describe cars and drivers.
+Each class has ID property it's needed to indetify each record in a list. There are two list classes TDriverList and TAutoList you have to add two methods loadFromJSON.
+As you can see we need copabilty to load list from a json string.
+Create a json file with following data:
 
 Driver 1
 Name: Frank Martin
@@ -34,6 +35,51 @@ Auto 3
 Brand: Checker Taxi
 Color: Yellow
 
+Task 1 steps:
+1) create loadFromJSON methods for TAutoList and TDriverList
+2) make sure all tests are passed
+
+Do not move to next task until you complete this one.
 
 
+Task 2
 
+Now when you able to read from JSON string add saveToJSON method. Also add two test methods into TestTDriverList and TestTAutoList classes
+respectively. Be aware you have to define test methods in published area in other case they won't appear during test runtime
+
+Task 2 steps:
+1) create saveToJSON methods for TAutoList and TDriverList
+2) add test for those methods
+
+
+Task 3
+
+Ok. Now you can load/save our lists into JSON. We need to arrange trips for drivers. It's time to introduce a new class.
+Let's define class TTrip. It will contain data about driver and auto and time when trip is started.
+For example:
+...
+TTrip = class
+  ...
+  FAutoID: Integer;
+  FDriverID: Integer;
+  FStartTime: TDateTime
+  ...
+
+Also we will need list of TTrip. After that create loadFromJSON and saveToJSON methods for list class.
+
+Task 3 steps:
+1) define TTrip class
+2) define list class for TTrip
+3) add loadFromJSON and saveToJSON methods into list TTrip class
+4) add tests for these loadFromJSON  and saveToJSON methods
+
+
+Task 4 (optional)
+
+Now you have a small structure of classes which is very similar to stuctures wihch are used in commercial products.
+However your code apparently is not good enough. Look thru your code and try to improve it,
+make it easier for understanding, make it robust to changes. After each changes you made run tests to be sure
+you don't mess things.
+
+Task 4 steps:
+1) Improve/refactor your code
