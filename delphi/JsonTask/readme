@@ -1,0 +1,39 @@
+You have several classe TAuto, TDriver with their help you can describe cars and drivers.
+Each class has ID property it's needed to indetify each record in list.
+
+Task 1
+
+There are two list classes TDriverList and TAutoList you have to add two methods loadFromJSON and saveToJSON.
+As you can see we need copabilty to save into a json file and load from a json file.
+Create json file with following data:
+
+Driver 1
+Name: Frank Martin
+Phone: 555-0100
+
+Driver 2
+Name: Travis Bickle
+Phone: 555-0123
+
+Driver 3
+Name: Daniel Moralex
+Phone: 555-0130
+
+Auto 1
+Brand: Peugeot
+Model: 406
+Color: White
+
+Auto 2
+Brand: BMW
+Model: 735i
+Color: Brown
+Number: 930UHV06
+
+Auto 3
+Brand: Checker Taxi
+Color: Yellow
+
+
+
+
