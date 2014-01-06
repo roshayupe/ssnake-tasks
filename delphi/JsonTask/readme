@@ -1,4 +1,4 @@
-It's buch of simple tasks to master or improve skills of working with JSON in delphi.
+It's bunch of simple tasks to master or improve skills of working with JSON in delphi.
 To start working on these tasks you have to have installed Delphi XE4 or newer.(look at rutracker.org if you don't have any versions)
 
 Task 1
@@ -55,7 +55,7 @@ Task 2 steps:
 Task 3
 
 Ok. Now you can load/save our lists into JSON. We need to arrange trips for drivers. It's time to introduce a new class.
-Let's define class TTrip. It will contain data about driver and auto and time when trip is started.
+Let's define class TTrip. It will contain data about driver and auto and time when trip starts.
 For example:
 ...
 TTrip = class
