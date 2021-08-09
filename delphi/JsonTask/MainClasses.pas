@@ -35,7 +35,7 @@ type
   TDriverList = class(TObjectList<TDriver>)
   end;
 
-  TAutoList =class(TObjectList<TAuto>)
+  TAutoList = class(TObjectList<TAuto>)
   end;
 
 implementation
