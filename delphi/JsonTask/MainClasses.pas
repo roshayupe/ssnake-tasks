@@ -116,21 +116,17 @@ var jso, jsNestO: TJSONObject;
 begin
   jso := TJSONObject.Create;
 
-  //Создаем массив
   jsArr := TJSONArray.Create;
 
   for I := 0 to pred(Self.Count) do
   begin
-    // заносим в массив пустой json-объект
     jsArr.AddElement(TJSONObject.Create);
-    // получаем ссылку на добавленный объект
     jsNestO := jsArr.Items[pred(jsArr.Count)] as TJSONObject;
-    // заполняем объект данными
     jsNestO.AddPair('ID', IntToStr(Self.Items[I].ID))
            .AddPair('Name', Self.Items[I].Name)
            .AddPair('Phone', Self.Items[I].Phone);
   end;
-  //записываем массив в json-объект
+
   jso.AddPair('Driver', jsArr);
 
   TFile.WriteAllText(fileName, jso.ToJSON);
@@ -199,16 +195,13 @@ var jso, jsNestO: TJSONObject;
 begin
   jso := TJSONObject.Create;
 
-  //Создаем массив
   jsArr := TJSONArray.Create;
 
   for I := 0 to pred(Self.Count) do
   begin
-    // заносим в массив пустой json-объект
     jsArr.AddElement(TJSONObject.Create);
-    // получаем ссылку на добавленный объект
     jsNestO := jsArr.Items[pred(jsArr.Count)] as TJSONObject;
-    // заполняем объект данными
+
     jsNestO.AddPair('ID', IntToStr(Self.Items[I].ID));
     fldValue := Self.Items[I].Brand;
     if not fldValue.IsEmpty then jsNestO.AddPair('Brand', fldValue);
@@ -277,22 +270,18 @@ var jso, jsNestO: TJSONObject;
 begin
   jso := TJSONObject.Create;
 
-  //Создаем массив
   jsArr := TJSONArray.Create;
 
   for I := 0 to pred(Self.Count) do
   begin
-    // заносим в массив пустой json-объект
     jsArr.AddElement(TJSONObject.Create);
-    // получаем ссылку на добавленный объект
     jsNestO := jsArr.Items[pred(jsArr.Count)] as TJSONObject;
-    // заполняем объект данными
     jsNestO.AddPair('ID', IntToStr(Self.Items[I].ID))
            .AddPair('AutoID', IntToStr(Self.Items[I].AutoID))
            .AddPair('DriverID', IntToStr(Self.Items[I].DriverID))
            .AddPair('StartTime', DateTimeToStr(Self.Items[I].StartTime));
   end;
-  //записываем массив в json-объект
+
   jso.AddPair('Trip', jsArr);
 
   TFile.WriteAllText(fileName, jso.ToJSON);
