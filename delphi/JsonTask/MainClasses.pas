@@ -230,6 +230,8 @@ var jsv   : TJsonValue;
     jso  : TJsonObject;
     i : integer;
     trip: TTrip;
+
+    FmtStngs: TFormatSettings;
 begin
 
   //parse json string
@@ -252,7 +254,15 @@ begin
           trip.ID := StrToInt(jso.Values['ID'].Value);
           trip.AutoID := StrToInt(jso.Values['AutoID'].Value);
           trip.DriverID := StrToInt(jso.Values['DriverID'].Value);
-          trip.StartTime := StrToDateTime(jso.Values['StartTime'].Value);
+
+          FmtStngs := TFormatSettings.Create(GetThreadLocale);
+          FmtStngs.DateSeparator := '.';
+          FmtStngs.ShortDateFormat := 'dd.mm.yyyy';
+          FmtStngs.TimeSeparator := ':';
+          FmtStngs.LongTimeFormat := 'hh:mm:ss';
+
+          trip.StartTime :=
+            StrToDateTime(jso.Values['StartTime'].Value, FmtStngs);
 
           Self.Add(trip);
 
@@ -267,6 +277,8 @@ procedure TTripList.saveToJSON(fileName: TFileName);
 var jso, jsNestO: TJSONObject;
     jsArr : TJsonArray;
     I: Integer;
+
+    FmtStngs: TFormatSettings;
 begin
   jso := TJSONObject.Create;
 
@@ -276,10 +288,17 @@ begin
   begin
     jsArr.AddElement(TJSONObject.Create);
     jsNestO := jsArr.Items[pred(jsArr.Count)] as TJSONObject;
+
+    FmtStngs := TFormatSettings.Create(GetThreadLocale);
+    FmtStngs.DateSeparator := '.';
+    FmtStngs.ShortDateFormat := 'dd.mm.yyyy';
+    FmtStngs.TimeSeparator := ':';
+    FmtStngs.LongTimeFormat := 'hh:mm:ss';
+
     jsNestO.AddPair('ID', IntToStr(Self.Items[I].ID))
            .AddPair('AutoID', IntToStr(Self.Items[I].AutoID))
            .AddPair('DriverID', IntToStr(Self.Items[I].DriverID))
-           .AddPair('StartTime', DateTimeToStr(Self.Items[I].StartTime));
+           .AddPair('StartTime', DateTimeToStr(Self.Items[I].StartTime, FmtStngs));
   end;
 
   jso.AddPair('Trip', jsArr);
