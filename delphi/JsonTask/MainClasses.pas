@@ -212,7 +212,7 @@ begin
     fldValue := Self.Items[I].Number;
     if not fldValue.IsEmpty then jsNestO.AddPair('Number', fldValue);
   end;
-  //записываем массив в json-объект
+
   jso.AddPair('Auto', jsArr);
 
   TFile.WriteAllText(fileName, jso.ToJSON);
