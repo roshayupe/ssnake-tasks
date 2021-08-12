@@ -1,0 +1,61 @@
+{
+	"Driver": [
+		{
+			"ID": "1",
+			"Name": "Frank Martin",
+			"Phone": "555-0100"
+		},
+		{
+			"ID": "2",
+			"Name": "Travis Bickle",
+			"Phone": "555-0123"
+		},
+		{
+			"ID": "3",
+			"Name": "Daniel Moralex",
+			"Phone": "555-0130"
+		}
+	],
+
+	"Auto": [
+		{
+			"ID": "1",
+			"Brand": "Peugeot",
+			"Model": "406",
+			"Color": "White"
+		},	
+		{
+			"ID": "2",
+			"Brand": "BMW",
+			"Model": "735i",
+			"Color": "Brown",
+			"Number": "930UHV06"
+		},
+		{
+			"ID": "3",
+			"Brand": "Checker Taxi",
+			"Color": "Yellow"
+		}
+	],
+
+	"Trip": [
+		{
+			"ID": "1",
+			"AutoID": "3",
+			"DriverID": "2",
+			"StartTime": "05.08.21 15:00:00"
+		},
+		{
+			"ID": "2",
+			"AutoID": "2",
+			"DriverID": "2",
+			"StartTime": "05.10.21 20:00:00"
+		},
+		{
+			"ID": "3",
+			"AutoID": "1",
+			"DriverID": "3",
+			"StartTime": "08.12.21 20:00:00"
+		}
+	]
+}
