@@ -258,13 +258,7 @@ begin
           trip.AutoID := StrToInt(jso.Values['AutoID'].Value);
           trip.DriverID := StrToInt(jso.Values['DriverID'].Value);
 
-//          FmtStngs := TFormatSettings.Create(GetThreadLocale);
           FmtStngs := TFormatSettings.Create('ru-RU');
-
-          //FmtStngs.DateSeparator := '.';
-          //FmtStngs.ShortDateFormat := 'dd.mm.yyyy';
-          //FmtStngs.TimeSeparator := ':';
-          //FmtStngs.LongTimeFormat := 'hh:mm:ss';
 
           dtDateTrip := StrToDateTime(jso.Values['StartTime'].Value, FmtStngs);
           OutputDebugString(PWideChar('Дата трипа (load): ' + DateTimeToStr(dtDateTrip)));
@@ -299,8 +293,6 @@ begin
     jsArr.AddElement(TJSONObject.Create);
     jsNestO := jsArr.Items[pred(jsArr.Count)] as TJSONObject;
 
-//    FmtStngs := TFormatSettings.Create(GetThreadLocale);
-//    FmtStngs := TFormatSettings.Create('en-US');
     FmtStngs := TFormatSettings.Create('ru-RU');
 
     jsNestO.AddPair('ID', IntToStr(Self.Items[I].ID))
