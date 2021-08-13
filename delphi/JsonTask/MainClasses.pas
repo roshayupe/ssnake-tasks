@@ -233,8 +233,6 @@ var jsv   : TJsonValue;
 
     FmtStngs: TFormatSettings;
 
-    dtDateTrip: TDateTime;
-
 begin
 
   //parse json string
@@ -260,9 +258,6 @@ begin
 
           FmtStngs := TFormatSettings.Create('ru-RU');
 
-          dtDateTrip := StrToDateTime(jso.Values['StartTime'].Value, FmtStngs);
-          OutputDebugString(PWideChar('Дата трипа (load): ' + DateTimeToStr(dtDateTrip)));
-
           trip.StartTime :=
             StrToDateTime(jso.Values['StartTime'].Value, FmtStngs);
 
@@ -281,8 +276,6 @@ var jso, jsNestO: TJSONObject;
     I: Integer;
 
     FmtStngs: TFormatSettings;
-
-    strDateTrip: string;
 begin
   jso := TJSONObject.Create;
 
@@ -299,9 +292,6 @@ begin
            .AddPair('AutoID', IntToStr(Self.Items[I].AutoID))
            .AddPair('DriverID', IntToStr(Self.Items[I].DriverID))
            .AddPair('StartTime', DateTimeToStr(Self.Items[I].StartTime, FmtStngs));
-
-    strDateTrip := DateTimeToStr(Self.Items[I].StartTime, FmtStngs);
-    OutputDebugString(PWideChar('Дата трипа (save): ' + strDateTrip));
   end;
 
   jso.AddPair('Trip', jsArr);
