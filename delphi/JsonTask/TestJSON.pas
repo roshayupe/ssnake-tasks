@@ -104,9 +104,6 @@ begin
   FullPathName := TPath.Combine(ExePath, JSON_FILE_NAME);
   FDriverList.loadFromJSON(FullPathName);
 
-  if TFile.Exists(TPath.Combine(ExePath, 'app.log')) then
-    TFile.Delete(TPath.Combine(ExePath, 'app.log'));
-
   newFullPathName := TPath.Combine(ExePath, SINTHESIS_JSON_FILE_NAME);
   FDriverList.saveToJSON(newFullPathName);
 
@@ -166,9 +163,6 @@ begin
   FullPathName := TPath.Combine(ExePath, JSON_FILE_NAME);
   FAutoList.loadFromJSON(FullPathName);
 
-  if TFile.Exists(TPath.Combine(ExePath, 'app.log')) then
-    TFile.Delete(TPath.Combine(ExePath, 'app.log'));
-
   newFullPathName := TPath.Combine(ExePath, SINTHESIS_JSON_FILE_NAME);
   FAutoList.saveToJSON(newFullPathName);
 
@@ -197,9 +191,12 @@ procedure TestTTripList.TestLoadFromJSON;
 var
   ExePath: string;
   FullPathName: TFileName;
+  FmtStngs: TFormatSettings;
 begin
   ExePath := ExpandFileName(GetCurrentDir + '\..\..\');
   FullPathName := TPath.Combine(ExePath, JSON_FILE_NAME);
+
+  FmtStngs := TFormatSettings.Create('ru-RU');
 
   // implement this method
   FTripList.loadFromJSON(FullPathName);
@@ -209,17 +206,17 @@ begin
   Check(FTripList[0].ID = 1);
   Check(FTripList[0].AutoID = 3);
   Check(FTripList[0].DriverID = 2);
-  Check(FTripList[0].StartTime = StrToDateTime('05.08.21 15:00:00'));
+  Check(FTripList[0].StartTime = StrToDateTime('05.08.21 15:00:00', FmtStngs));
 
   Check(FTripList[1].ID = 2);
   Check(FTripList[1].AutoID = 2);
   Check(FTripList[1].DriverID = 2);
-  Check(FTripList[1].StartTime = StrToDateTime('05.10.21 20:00:00'));
+  Check(FTripList[1].StartTime = StrToDateTime('05.10.21 20:00:00', FmtStngs));
 
   Check(FTripList[2].ID = 3);
   Check(FTripList[2].AutoID = 1);
   Check(FTripList[2].DriverID = 3);
-  Check(FTripList[2].StartTime = StrToDateTime('08.12.21 20:00:00'));
+  Check(FTripList[2].StartTime = StrToDateTime('08.12.21 20:00:00', FmtStngs));
 end;
 
 procedure TestTTripList.testSaveToJSON;
@@ -231,9 +228,6 @@ begin
 
   FullPathName := TPath.Combine(ExePath, JSON_FILE_NAME);
   FTripList.loadFromJSON(FullPathName);
-
-  if TFile.Exists(TPath.Combine(ExePath, 'app.log')) then
-    TFile.Delete(TPath.Combine(ExePath, 'app.log'));
 
   newFullPathName := TPath.Combine(ExePath, SINTHESIS_JSON_FILE_NAME);
   FTripList.saveToJSON(newFullPathName);
